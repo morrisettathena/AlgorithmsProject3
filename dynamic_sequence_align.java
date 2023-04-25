@@ -10,15 +10,26 @@
  * Purpose:  A dynamic programming approach to sequence alignment
  */
 
+import java.util.Random;
+
 class dynamic_sequence_align {
 
     final static int MIS_PENALTY = 1; //Misalignment penalty
     final static int GAP_PENALTY = 2; //Gap penalty
+
+    static int compars = 0;
+
     public static void main(String args[]){
         String s1 = "AACAGTTACC"; //test cases
         String s2 = "TAAGGTCA";
+        long start = System.nanoTime();
         sequence_align_func(s1, s2);
+        long end = System.nanoTime();
+
+        System.out.println("Elapsed time: " + (end-start));
     }
+
+
 
     public static void sequence_align_func(String s1, String s2) {
 
@@ -44,6 +55,8 @@ class dynamic_sequence_align {
 
                 //If characters do not match, consider it a misalignment penalty
                 int penalty = 0;
+                
+                compars += 1;
                 if (s1.charAt(i) != s2.charAt(j))
                     penalty = MIS_PENALTY;
 
@@ -51,6 +64,8 @@ class dynamic_sequence_align {
                 int a = arr[i+1][j+1] + penalty;
                 int b = arr[i+1][j] + GAP_PENALTY;
                 int c = arr[i][j+1] + GAP_PENALTY;
+
+                compars += 2;
                 int min_val = Integer.min(Integer.min(a, b), c);
                 
                 arr[i][j] = min_val;
@@ -63,6 +78,25 @@ class dynamic_sequence_align {
                 System.out.printf("%3d", arr[i][j]);
             }
             System.out.println();
+        }
+
+        System.out.printf("Number of compars: %d\n", compars);
+
+        
+    }
+
+    public static void getAlignment(int[][] arr, String s1, String s2) {
+        int i = 0;
+        int j = 0;
+
+        String s1new = "";
+        String s2new = "";
+        while (i < arr.length && j < arr[0].length) {
+            int a = Integer.MAX_VALUE;
+            int b = Integer.MAX_VALUE;
+            int c = Integer.MAX_VALUE;
+
+            
         }
     }
 
