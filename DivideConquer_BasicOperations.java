@@ -13,8 +13,8 @@
     public static void main(String[] args) {
 
         //Define two DNA sequences as strings
-        String x = "AACAGTTACC";
-        String y = "TAAGGTCA";
+        String x = "ATTAT";
+        String y = "GGCCG";
 
         //Get the length of each sequence
         int m = x.length();

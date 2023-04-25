@@ -12,8 +12,8 @@
     public static void main(String[] args) {
 
         //Define two DNA sequences as strings
-        String x = "AACAGTTACC";
-        String y = "TAAGGTCA";
+        String x = "GAGCCATTTGAGTCT";
+        String y = "CAGTTTCTTCGGCCT";
 
         //Get the length of each sequence
         int m = x.length();
@@ -26,10 +26,10 @@
         int result = opt(x, y, m, n, 0, 0);
 
         //Calculate the elapsed time in milliseconds
-        long elapsedTime = (System.nanoTime() - startTime) / 1_000_000;
+        long elapsedTime = (System.nanoTime() - startTime);
 
         System.out.println("The optimal cost of alignment is: " + result);
-        System.out.println("Time taken to compute the result: " + elapsedTime + " ms");
+        System.out.println("Time taken to compute the result: " + elapsedTime + " ns");
     }
 
     public static int opt(String x, String y, int m, int n, int i, int j) {
